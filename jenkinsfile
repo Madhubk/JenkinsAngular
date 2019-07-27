@@ -1,0 +1,63 @@
+pipeline {
+    agent any
+    stages {
+        stage('Git Clone') { // for display purposes
+            steps {
+                // Get some code from a GitHub repository
+                git url: 'https://github.com/Madhubk/JenkinsAngular.git'
+            }
+        }
+        stage('Preparation') {
+            steps {
+                // bat '"C:\\tools\\nuget.exe" restore MVCPipeline.sln'
+                sh "npm install"
+            }
+        }
+        // stage('Compile') {
+        //     steps {
+        //         bat "\"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" MVCPipeline.sln"
+        //     }
+        // }
+          stage('Build') {
+            steps {
+                // bat "\"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" MVCPipeline.sln"
+                sh "npm run build:ssr"
+            }
+        }
+          stage('Deploy') {
+            steps {
+                // bat "\"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" MVCPipeline.sln"
+                  sh "pm2 restart all"    
+            }
+        }
+         
+    //    stage('Packaging'){
+    //         steps {
+    //             bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\MSBuild.exe" MVCPipeline\\MVCPipeline.csproj /T:Clean;Build;Package /p:Configuration=Release'
+    //         }
+    //     }
+        // stage('Deploy') {
+        //     steps {
+        //         bat 'xcopy "C:\\Users\\Madhu\\.jenkins\\workspace\\MVCpipelinedemo\\MVCPipeline\\obj\\Release\\Package\\PackageTmp" "E:\\Newfolder333" /s/y/j'
+        //     }
+        // }
+    }
+    post {
+        always {
+            echo 'Production build process pipeline has completed'
+            //deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'Production build successful!'
+        }
+        unstable {
+            echo 'Production build is unstable :/'
+        }
+        failure {
+            echo 'Production build failed :('
+        }
+        changed {
+            echo 'Build status has changed.'
+        }
+    }
+}
