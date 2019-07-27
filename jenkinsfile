@@ -40,8 +40,8 @@ pipeline {
     //     }
         stage('Deploy') {
             steps {
-                bat 'xcopy "C:\\Users\\Madhu\\.jenkins\\workspace\\MVCpipelinedemo\\MVCPipeline\\obj\\Release\\Package\\PackageTmp" "E:\\Newfolder333" /s/y/j'
-                
+                bat 'xcopy "C:\Users\Madhu\.jenkins\workspace\Angularpipeline\dist\angular-tour-of-heroes" "E:\\Deploy_A3" /s/y/j'
+
             }
         }
     }
