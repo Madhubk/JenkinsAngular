@@ -11,7 +11,7 @@ pipeline {
         stage('Preparation') {
             steps {
                 // bat '"C:\\tools\\nuget.exe" restore MVCPipeline.sln'
-                sh "npm install"
+                bat "npm install"
             }
         }
         // stage('Compile') {
@@ -22,13 +22,13 @@ pipeline {
           stage('Build') {
             steps {
                 // bat "\"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" MVCPipeline.sln"
-                sh "npm run build:ssr"
+                bat "npm run build:ssr"
             }
         }
           stage('Deploy') {
             steps {
                 // bat "\"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" MVCPipeline.sln"
-                  sh "pm2 restart all"    
+                  bat "pm2 restart all"    
             }
         }
          
