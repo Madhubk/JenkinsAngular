@@ -4,7 +4,8 @@ pipeline {
         stage('Git Clone') { // for display purposes
             steps {
                 // Get some code from a GitHub repository
-                git url: 'https://github.com/Madhubk/JenkinsAngular.git'
+                // git url: 'https://github.com/Madhubk/JenkinsAngular.git'
+                 git credentialsId:'c7a1c6bd-0231-4093-94c5-0c0808723b20', url: 'https://github.com/Madhubk/JenkinsAngular.git'
             }
         }
         stage('Preparation') {
