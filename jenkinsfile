@@ -38,11 +38,12 @@ pipeline {
     //             bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\MSBuild.exe" MVCPipeline\\MVCPipeline.csproj /T:Clean;Build;Package /p:Configuration=Release'
     //         }
     //     }
-        // stage('Deploy') {
-        //     steps {
-        //         bat 'xcopy "C:\\Users\\Madhu\\.jenkins\\workspace\\MVCpipelinedemo\\MVCPipeline\\obj\\Release\\Package\\PackageTmp" "E:\\Newfolder333" /s/y/j'
-        //     }
-        // }
+        stage('Deploy') {
+            steps {
+                bat 'xcopy "C:\\Users\\Madhu\\.jenkins\\workspace\\MVCpipelinedemo\\MVCPipeline\\obj\\Release\\Package\\PackageTmp" "E:\\Newfolder333" /s/y/j'
+                
+            }
+        }
     }
     post {
         always {
