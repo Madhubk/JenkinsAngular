@@ -25,12 +25,12 @@ pipeline {
                 bat "npm run build"
             }
         }
-          stage('Deploy') {
-            steps {
-                // bat "\"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" MVCPipeline.sln"
-                  bat "pm2 restart all"    
-            }
-        }
+        //   stage('Deploy') {
+        //     steps {
+        //         // bat "\"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" MVCPipeline.sln"
+        //           bat "pm2 restart all"    
+        //     }
+        // }
          
     //    stage('Packaging'){
     //         steps {
